@@ -1,0 +1,2 @@
+1. http://lightoj.com/volume_showproblem.php?problem=1211
+Solution: https://paste.ubuntu.com/p/yDGvgGhh4D/
