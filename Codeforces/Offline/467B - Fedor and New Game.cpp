@@ -20,7 +20,7 @@ int main()
   cin >> t;
   ara.push_back(t);
   //cout << ara.size() << endl;
-  loop(i, ara.size()-1)//You Have To Skip Comparing Last Player (Fedor) With Itself
+  loop(i, ara.size()-1)//You Have To Skip Comparing Last Player (Fedor) With Himself
   {
     if(__builtin_popcount(ara[i] ^ ara[m]) <= k){
       couunt++;
