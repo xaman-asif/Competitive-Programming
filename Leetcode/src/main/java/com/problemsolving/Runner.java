@@ -1,10 +1,12 @@
 package com.problemsolving;
 
+import java.util.Arrays;
+
 public class Runner
 {
     public static void main( String[] args )
     {
-        ContainsDuplicate containsDuplicate = new ContainsDuplicate();
-        System.out.println(containsDuplicate.containsDuplicate(new int[] {1, 2, 3, 1}));
+        System.out.println(Arrays.toString(new TwoSum().twoSum(new int[] {3, 2, 4}, 6)));
+
     }
 }
