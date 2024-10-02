@@ -1,32 +1,45 @@
 package com.problemsolving;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 public class TopKFrequentElements {
   public int[] topKFrequent(int[] nums, int k) {
 
-    HashMap<Integer, Integer> numFreq = new HashMap<>();
-
-
+    HashMap<Integer, Integer> keyToVal = new HashMap<>();
+    HashMap<Integer, List<Integer>> valToKeys = new HashMap<>();
 
     for (int i = 0; i < nums.length; ++i) {
-      if (!numFreq.containsKey(nums[i])) {
-        numFreq.put(nums[i], 1);
+      if (!keyToVal.containsKey(nums[i])) {
+        keyToVal.put(nums[i], 1);
       } else {
-        numFreq.put(nums[i], numFreq.get(nums[i]) + 1);
+        keyToVal.put(nums[i], keyToVal.get(nums[i]) + 1);
       }
     }
+
+    for (int i : keyToVal.keySet()) {
+      if (!valToKeys.containsKey(keyToVal.get(i))) {
+        List<Integer> tempListA = new ArrayList<>();
+        tempListA.add(i);
+        valToKeys.put(keyToVal.get(i), tempListA);
+      } else {
+        List<Integer> tempListB = valToKeys.get(keyToVal.get(i));
+        tempListB.add(i);
+        valToKeys.put(keyToVal.get(i), tempListB);
+      }
+    }
+
+    List<Integer> freqList = new ArrayList<>(valToKeys.keySet());
+    Collections.sort(freqList, Collections.reverseOrder());
 
     List<Integer> result = new ArrayList<>();
 
-    for (int i: numFreq.keySet()) {
-      if (numFreq.get(i) == k) {
-        result.add(i);
-      }
+    for (int i : freqList) {
+      result.addAll(valToKeys.get(i));
     }
 
-    return result.stream().mapToInt(i -> i) .toArray();
+    return result.stream().limit(k).mapToInt(i -> i).toArray();
   }
 }
