@@ -7,7 +7,7 @@ public class Runner
 {
     public static void main( String[] args )
     {
-        System.out.println(new ProductOfArrayExceptSelf().productExceptSelf(new int[]{1,2,3,4}));
+        System.out.println(new LongestConsecutiveSequence().longestConsecutive(new int[]{1, 2, 0, 1}));
 
     }
 }
