@@ -4,10 +4,11 @@ using namespace std;
 
 int main()
 {
-    // Syntax
-    // unordered_set<object_type> variable_name;
-    // O(1) -- average case
-    // O(n) -- worst case
+    // Ordering: no ordering
+    // implementation: Hashtable
+    // search time: O(1) -> Average O(n) -> Worst Case
+    // insertion time: Same as search
+    // deletion time: Same as search
 
     unordered_set<int> s;
 
