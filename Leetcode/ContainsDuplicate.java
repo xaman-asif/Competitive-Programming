@@ -1,5 +1,3 @@
-package com.problemsolving;
-
 //https://leetcode.com/problems/contains-duplicate/description/
 
 import java.util.HashSet;

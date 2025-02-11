@@ -1,5 +1,3 @@
-package com.problemsolving;
-
 public class ProductOfArrayExceptSelf {
   public int[] productExceptSelf(int[] nums) {
     int[] right = new int[nums.length];

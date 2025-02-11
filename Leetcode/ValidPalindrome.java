@@ -1,5 +1,3 @@
-package com.problemsolving;
-
 public class ValidPalindrome {
   public boolean isPalindrome(String s) {
     s = s.toLowerCase().replaceAll("[^a-z0-9]", "");

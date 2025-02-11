@@ -1,5 +1,3 @@
-package com.problemsolving;
-
 public class TwoSumII {
   public int[] twoSum(int[] numbers, int target) {
     int leftPointer = 0;
