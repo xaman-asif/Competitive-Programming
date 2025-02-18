@@ -87,11 +87,13 @@ public class Main {
   public static void main(String[] args) throws IOException {
     fileIO();
     var sc = Scanner(SystemIn);
-    int n = sc.nextInt();
+    // int n = sc.nextInt();
 
-    int[] array = { 2, 2, 2, 3, 5 };
+    int[] array = { 2, 2, 2, 3, 5, 6 };
 
-    System.out.println(maxFrequency(array, 0));
+    // System.out.println(maxFrequency(array, 0));
+
+    print(array.toString());
 
     SystemOut.flush();
   }
