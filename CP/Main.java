@@ -6,7 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class Main {
   private static final class tokens extends LinkedList<String> {
@@ -86,15 +88,47 @@ public class Main {
     fileIO();
     var sc = Scanner(SystemIn);
     int n = sc.nextInt();
-    print(fib(n));
+
+    int[] array = { 2, 2, 2, 3, 5 };
+
+    System.out.println(maxFrequency(array, 0));
+
     SystemOut.flush();
   }
 
-  public static int fib(int n) {
-    if (n == 0)
-      return 0;
-    if (n == 1)
-      return 1;
-    return fib(n - 1) + fib(n - 2);
+  public static HashMap<Integer, Integer> frequencyCount(int[] arr) {
+
+    HashMap<Integer, Integer> hashMap = new HashMap<>();
+
+    for (int i = 0; i < arr.length; i++) {
+      if (!hashMap.containsKey(arr[i])) {
+        hashMap.put(arr[i], 1);
+      } else {
+        hashMap.put(arr[i], hashMap.get(arr[i]) + 1);
+      }
+    }
+
+    return hashMap;
+  }
+
+  public static int maxFrequency(int[] nums, int k) {
+
+    HashMap<Integer, Integer> hashMap = frequencyCount(nums);
+
+    int maxNumber = Integer.MIN_VALUE;
+    int maxIndex = 0;
+
+    for (Map.Entry<Integer, Integer> mapElement : hashMap.entrySet()) {
+
+      if (mapElement.getValue() > maxNumber) {
+        maxNumber = mapElement.getValue();
+        maxIndex = mapElement.getKey();
+      }
+    }
+
+    System.out.println(maxNumber);
+    System.out.println(maxIndex);
+
+    return 0;
   }
 }
