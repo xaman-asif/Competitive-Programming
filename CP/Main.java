@@ -96,7 +96,7 @@ public class Main {
     // int n = sc.nextInt();
     Main main = new Main();
 
-    main.findAllSubarraysWithGivenSum(new int[] {3, 2, 1}, 3);
+    main.findAllSubarraysWithGivenSum(new int[] {1, 2, 3, -3, 1, 1, 1, 4, 2, -3}, 3);
 
     SystemOut.flush();
   }
