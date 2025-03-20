@@ -6,9 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Set;
 
 public class Main {
   private static final class tokens extends LinkedList<String> {
@@ -90,21 +89,14 @@ public class Main {
     // int n = sc.nextInt();
     Main main = new Main();
 
-    main.findDuplicate(new int[] {1,3,4,2,2});
+    main.merge(new int[] {1,2,3,0,0,0}, 3, new int[] {2, 5, 6}, 3);
 
     SystemOut.flush();
   }
 
-  public int findDuplicate(int[] nums) {
-    Set<Integer> set = new HashSet<>();
-
-    for (int i = 0; i < nums.length; i++) {
-      if (set.contains(nums[i])) {
-        return nums[i];
-      } else {
-        set.add(nums[i]);
-      }
-    }
-    return 0;
+  public void merge(int[] nums1, int m, int[] nums2, int n) {
+    for (int i = m, j = 0; i < m + n; i++)
+      nums1[i] = nums2[j++];
+    Arrays.sort(nums1);
   }
 }

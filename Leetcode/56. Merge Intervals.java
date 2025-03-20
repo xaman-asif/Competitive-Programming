@@ -6,9 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Set;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Main {
   private static final class tokens extends LinkedList<String> {
@@ -90,21 +91,45 @@ public class Main {
     // int n = sc.nextInt();
     Main main = new Main();
 
-    main.findDuplicate(new int[] {1,3,4,2,2});
+    main.merge(new int[][] {{1, 6}, {2, 5}, {1, 3}, {3, 7}, {2, 3}, {8, 10}});
 
     SystemOut.flush();
   }
 
-  public int findDuplicate(int[] nums) {
-    Set<Integer> set = new HashSet<>();
+  public int[][] merge(int[][] intervals) {
+    TreeMap<Integer, Integer> treeMap = new TreeMap<>();
 
-    for (int i = 0; i < nums.length; i++) {
-      if (set.contains(nums[i])) {
-        return nums[i];
+    for (int i = 0; i < intervals.length; i++) {
+      if (treeMap.containsKey(intervals[i][0])) {
+        if (intervals[i][1] > treeMap.get(intervals[i][0])) {
+          treeMap.put(intervals[i][0], intervals[i][1]);
+        }
       } else {
-        set.add(nums[i]);
+        treeMap.put(intervals[i][0], intervals[i][1]);
       }
     }
-    return 0;
+
+    ArrayList<int[]> tempList = new ArrayList<>();
+
+    for (Map.Entry<Integer, Integer> entry : treeMap.entrySet()) {
+      if (tempList.isEmpty()) {
+        tempList.add(new int[] {entry.getKey(), entry.getValue()});
+      } else if (tempList.get(tempList.size() - 1)[0] <= entry.getKey() &&
+          entry.getKey() <= tempList.get(tempList.size() - 1)[1]) {
+        if (tempList.get(tempList.size() - 1)[1] < entry.getValue()) {
+          tempList.get(tempList.size() - 1)[1] = entry.getValue();
+        }
+      } else {
+        tempList.add(new int[] {entry.getKey(), entry.getValue()});
+      }
+    }
+
+    int[][] resultArray = new int[tempList.size()][];
+
+    for (int i = 0; i < tempList.size(); i++) {
+      resultArray[i] = tempList.get(i);
+    }
+
+    return resultArray;
   }
 }
